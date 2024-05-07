@@ -5,9 +5,10 @@
   "description": "",
   "scripts": {
     "build": "pkgroll --src sources",
-    "start": "tsx index.ts",
     "lint": "tsc && eslint . --ext .ts",
-    "test": "NODE_OPTIONS='--import=tsx --no-warnings' ava"
+    "test": "NODE_OPTIONS='--import=tsx --no-warnings' ava",
+    "inspect:cfb": "tsx tests/inspect-cfb.ts",
+    "debug": "tsx index.ts"
   },
   "author": {
     "email": "piquark6046@proton.me",
