@@ -61,9 +61,12 @@
     "typescript-eslint": "^7.5.0"
   },
   "dependencies": {
+    "cfb": "^1.2.2",
     "commander": "^12.0.0",
     "docx": "^8.5.0",
+    "openpgp": "^5.11.1",
     "pdf-lib": "^1.17.1",
+    "pkijs": "^3.0.16",
     "typescript": "^5.4.4"
   }
 }
