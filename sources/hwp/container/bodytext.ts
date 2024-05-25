@@ -1,7 +1,7 @@
-export interface HwpSection {
+export interface IHwpSection {
   Text: string
 }
 
-export interface HwpBodyText {
-  [Index: number]: HwpSection
+export interface IHwpBodyText {
+  [Index: number]: IHwpSection
 }

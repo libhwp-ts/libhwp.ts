@@ -1,3 +1,3 @@
-export interface HwpXMLTemplate {
+export interface IHwpXMLTemplate {
 
 }

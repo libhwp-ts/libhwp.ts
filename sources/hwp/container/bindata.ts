@@ -1,7 +1,7 @@
-export interface HwpBinaryData {
+export interface IHwpBinaryData {
   
 }
 
-export interface HwpBinData {
-  [Index: number]: HwpBinaryData
+export interface IHwpBinData {
+  [Index: number]: IHwpBinaryData
 }

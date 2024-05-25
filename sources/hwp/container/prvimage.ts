@@ -1,3 +1,3 @@
-export interface HwpPrvImage {
+export interface IHwpPrvImage {
   
 }

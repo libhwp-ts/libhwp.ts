@@ -1,12 +1,12 @@
-export interface HwpLinkDoc {
+export interface IHwpLinkDoc {
 
 }
 
-export interface HwpDrmLicense {
+export interface IHwpDrmLicense {
 
 }
 
-export interface HwpDocOptions {
-  LinkDoc: HwpLinkDoc
-  DrmLicense: HwpDrmLicense
+export interface IHwpDocOptions {
+  LinkDoc: IHwpLinkDoc
+  DrmLicense: IHwpDrmLicense
 }

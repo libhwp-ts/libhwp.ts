@@ -13,28 +13,28 @@ interface CaretLocation {
   CharUintInParagraph: number
 }
 
-interface HwpDocProperties {
+interface IHwpDocProperties {
   AreaCount: number
   StartingNumber: HwpStartingNumber
   CaretLocation: CaretLocation
 }
 
-type HwpIDMappingsIndex = 'binary' | 'hangulfont' | 'englishfont' | 'hanjafont'
+type IHwpIDMappingsIndex = 'binary' | 'hangulfont' | 'englishfont' | 'hanjafont'
   | 'japanesefont' | 'otherfont' | 'symbolfont' | 'userfont'
   | 'boundarybackground' | 'charshape' | 'tabdef' | 'paragraphnumber'
   | 'starttable' | 'paragraphshape' | 'style' | 'memoshape'
   | 'changetracking' | 'changetrackinguser'
 
-interface HwpIDMappings {
-  [Index: number]: HwpIDMappingsIndex
+interface IHwpIDMappings {
+  [Index: number]: IHwpIDMappingsIndex
 }
 
-interface HwpBinData {
+interface IHwpBinData {
   
 }
 
-export interface HwpDocInfo {
-  DocProperties: HwpDocProperties
-  IDMappings: HwpIDMappings
-  BinData: HwpBinData
+export interface IHwpDocInfo {
+  DocProperties: IHwpDocProperties
+  IDMappings: IHwpIDMappings
+  BinData: IHwpBinData
 }

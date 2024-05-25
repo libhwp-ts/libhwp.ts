@@ -1,7 +1,7 @@
-export interface HwpVersionLog {
+export interface IHwpVersionLog {
 
 }
 
-export interface HwpDocHistory {
-  [Index: number]: HwpVersionLog
+export interface IHwpDocHistory {
+  [Index: number]: IHwpVersionLog
 }

@@ -1,4 +1,4 @@
-export interface HwpFileHeader {
+export interface IHwpFileHeader {
   Version: string
   Compressed: boolean
   ProtectedByPassword: boolean

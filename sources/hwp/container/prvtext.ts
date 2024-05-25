@@ -1,3 +1,3 @@
-export interface HwpPrvText {
+export interface IHwpPrvText {
   
 }

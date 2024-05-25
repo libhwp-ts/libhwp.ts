@@ -1,3 +1,3 @@
-export interface HwpScripts {
+export interface IHwpScripts {
   
 }
