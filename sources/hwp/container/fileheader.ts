@@ -29,7 +29,7 @@ export class HwpFileHeader {
   /**
    * The version of the HWP document.
    */
-  public Version: string = '5.0.3.0'
+  public Version: string = '0.0.0.0'
 
   /**
    * Indicates whether the document is compressed.
