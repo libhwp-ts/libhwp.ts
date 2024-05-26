@@ -191,7 +191,7 @@ export class ByteWriter extends ByteManager {
    */
   WriteInt16(Value: number): void {
     this.View.setInt16(this.OffsetByte, Value, true)
-    this.OffsetByte += 2
+    this.OffsetByte += 1
   }
 
   /**
@@ -200,7 +200,7 @@ export class ByteWriter extends ByteManager {
    */
   WriteUInt16(Value: number): void {
     this.View.setUint16(this.OffsetByte, Value, true)
-    this.OffsetByte += 2
+    this.OffsetByte += 1
   }
 
   /**
@@ -253,7 +253,6 @@ export class ByteWriter extends ByteManager {
    * @param Value - The string to write.
    */
   WriteString(Value: string): void {
-    this.WriteUInt16(Value.length)
     for (let I = 0; I < Value.length; I++) {
       this.WriteUInt16(Value.charCodeAt(I))
     }
