@@ -36,6 +36,18 @@ export class ByteManager {
   IsEOF(): boolean {
     return this.View.byteLength <= this.OffsetByte
   }
+
+  /**
+   * Reverses the order of bytes in the DataView.
+   */
+  Reverse(): void {
+    const View = new Uint8Array(this.View.buffer)
+    const Reversed = new Uint8Array(View.length)
+    for (let I = 0; I < View.length; I++) {
+      Reversed[I] = View[View.length - I - 1]
+    }
+    this.View = new DataView(Reversed.buffer)
+  }
 }
 
 /**
