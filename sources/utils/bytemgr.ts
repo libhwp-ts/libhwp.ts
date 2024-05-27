@@ -48,6 +48,14 @@ export class ByteManager {
     }
     this.View = new DataView(Reversed.buffer)
   }
+  
+  /**
+   * Returns the underlying ArrayBuffer.
+   * @returns The underlying ArrayBuffer.
+   */
+  ArrayBuffer(): ArrayBuffer {
+    return this.View.buffer
+  }
 }
 
 /**
@@ -267,13 +275,5 @@ export class ByteWriter extends ByteManager {
     for (let I = 0; I < Value.length; I++) {
       this.WriteUInt16(Value.charCodeAt(I))
     }
-  }
-
-  /**
-   * Returns the underlying ArrayBuffer.
-   * @returns The underlying ArrayBuffer.
-   */
-  ArrayBuffer(): ArrayBuffer {
-    return this.View.buffer
   }
 }
