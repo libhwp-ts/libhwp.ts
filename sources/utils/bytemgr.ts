@@ -237,15 +237,14 @@ export class ByteWriter extends ByteManager {
 
   /**
    * Writes a specified number of bytes from an ArrayBuffer to the buffer.
-   * @param Byte - The number of bytes to write.
    * @param Value - The ArrayBuffer containing the bytes to write.
    */
-  Write(Byte: number, Value: ArrayBuffer): void {
+  Write(Value: ArrayBuffer): void {
     const Buffer = new Uint8Array(Value)
-    for (let I = 0; I < Byte; I++) {
+    for (let I = 0; I < Buffer.buffer.byteLength; I++) {
       this.View.setUint8(this.OffsetByte + I, Buffer[I])
     }
-    this.OffsetByte += Byte
+    this.OffsetByte += Buffer.buffer.byteLength
   }
 
   /**
