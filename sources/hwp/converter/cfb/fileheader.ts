@@ -10,6 +10,7 @@ export function ConvertHwpFileHeaderToCfb(HwpFileHeaderInstance: HwpFileHeader):
   ByteWriterInstance.Write(ConvertVersionToCfb(HwpFileHeaderInstance)) // Version
   ByteWriterInstance.Write(ConvertFlagsToCfb(HwpFileHeaderInstance)) // Flags
   ByteWriterInstance.Write(new ArrayBuffer(4)) // Ignore KOGL section
+  ByteWriterInstance.Write(ConvertEncryptionVersionToCfb(HwpFileHeaderInstance)) // Encryption Version
   return ByteWriterInstance.ArrayBuffer()
 }
 
@@ -27,4 +28,10 @@ function ConvertFlagsToCfb(HwpFileHeaderInstance: HwpFileHeader): ArrayBuffer {
   const BitWriterInstance = new BitWriter(new ArrayBuffer(4))
   HwpFileHeaderFlags.forEach(Flag => BitWriterInstance.WriteBit(HwpFileHeaderInstance[Flag]))
   return BitWriterInstance.ArrayBuffer()
+}
+
+function ConvertEncryptionVersionToCfb(HwpFileHeaderInstance: HwpFileHeader): ArrayBuffer {
+  const ByteWriterInstance = new ByteWriter(new ArrayBuffer(4))
+  ByteWriterInstance.WriteUInt16(HwpFileHeaderInstance.EncryptionVersion)
+  return ByteWriterInstance.ArrayBuffer()
 }
