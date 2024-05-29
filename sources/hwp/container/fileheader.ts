@@ -124,7 +124,7 @@ export class HwpFileHeader {
   /**
    * The encryption version of the document.
    */
-  public EncryptionVersion: number = 0
+  public EncryptionVersion: 0 | 1 | 2 | 3 | 4 = 0
 
   /**
    * The KOGL country code of the document.
