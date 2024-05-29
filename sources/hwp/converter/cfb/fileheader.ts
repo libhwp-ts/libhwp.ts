@@ -9,6 +9,7 @@ export function ConvertHwpFileHeaderToCfb(HwpFileHeaderInstance: HwpFileHeader):
   ByteWriterInstance.WriteString('HWP Document File') // Hwp File Signature
   ByteWriterInstance.Write(ConvertVersionToCfb(HwpFileHeaderInstance)) // Version
   ByteWriterInstance.Write(ConvertFlagsToCfb(HwpFileHeaderInstance)) // Flags
+  ByteWriterInstance.Write(new ArrayBuffer(4)) // Ignore KOGL section
   return ByteWriterInstance.ArrayBuffer()
 }
 
