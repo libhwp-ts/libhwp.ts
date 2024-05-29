@@ -70,9 +70,9 @@ export class BitReader extends BitManager {
 
     this.OffsetBit++
 
-    if (this.OffsetBit >= 8) {
-      this.OffsetBit -= (this.OffsetBit % 8)
-      this.OffsetByte += Math.floor(this.OffsetBit / 8)
+    if (this.OffsetBit === 8) {
+      this.OffsetBit = 0
+      this.OffsetByte++
     }
 
     return Value
@@ -100,9 +100,9 @@ export class BitWriter extends BitManager {
 
     this.OffsetBit++
 
-    if (this.OffsetBit >= 8) {
-      this.OffsetBit -= (this.OffsetBit % 8)
-      this.OffsetByte += Math.floor(this.OffsetBit / 8)
+    if (this.OffsetBit === 8) {
+      this.OffsetBit = 0
+      this.OffsetByte++
     }
   }
 }
