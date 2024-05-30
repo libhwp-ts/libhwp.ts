@@ -20,7 +20,7 @@ function ConvertVersionToCfb(HwpFileHeaderInstance: HwpFileHeader): ArrayBuffer 
     | ((Number(HwpFileHeaderInstance.Version.split('.')[1]) & 0xff) << 16)
     | ((Number(HwpFileHeaderInstance.Version.split('.')[2]) & 0xff) << 8)
     | (Number(HwpFileHeaderInstance.Version.split('.')[3]) & 0xff)
-  ByteWriterInstance.WriteUInt8(VersionNumber)
+  ByteWriterInstance.WriteUInt32(VersionNumber)
   return ByteWriterInstance.ArrayBuffer()
 }
 
