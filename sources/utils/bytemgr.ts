@@ -161,12 +161,14 @@ export class ByteReader extends ByteManager {
 
   /**
    * Reads a string from the buffer.
+   * @param Offset - The number of bytes to read.
+   * @param TextDecoderOptions - The TextDecoderOptions object to use when decoding the string.
    * @returns The read string.
    */
-  ReadString(Offset: number): string {
+  ReadString(Offset: number, TextDecoderOptions?: {Label: string, Options?: TextDecoderOptions}): string {
     const Decode = this.ArrayBuffer().slice(this.OffsetByte, this.OffsetByte + Offset)
     this.OffsetByte += Offset
-    return new TextDecoder().decode(Decode)
+    return new TextDecoder(TextDecoderOptions.Label, TextDecoderOptions.Options).decode(Decode)
   }
 }
 
