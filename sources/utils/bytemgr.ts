@@ -166,6 +166,9 @@ export class ByteReader extends ByteManager {
    * @returns The read string.
    */
   ReadString(Offset: number, TextDecoderOptions?: {Label: string, Options?: TextDecoderOptions}): string {
+    if (typeof TextDecoderOptions === 'undefined') {
+      TextDecoderOptions = {Label: 'utf-8', Options: {}}
+    }
     const Decode = this.ArrayBuffer().slice(this.OffsetByte, this.OffsetByte + Offset)
     this.OffsetByte += Offset
     return new TextDecoder(TextDecoderOptions.Label, TextDecoderOptions.Options).decode(Decode)
