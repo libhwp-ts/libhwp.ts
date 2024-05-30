@@ -163,15 +163,10 @@ export class ByteReader extends ByteManager {
    * Reads a string from the buffer.
    * @returns The read string.
    */
-  ReadString(): string {
-    const Length = this.ReadUInt16()
-    const Result: string[] = []
-
-    for (let I = 0; I < Length; I++) {
-      Result.push(String.fromCharCode(this.ReadUInt16()))
-    }
-
-    return Result.join('')
+  ReadString(Offset: number): string {
+    const Decode = this.ArrayBuffer().slice(this.OffsetByte, this.OffsetByte + Offset)
+    this.OffsetByte += Offset
+    return new TextDecoder().decode(Decode)
   }
 }
 
@@ -272,8 +267,7 @@ export class ByteWriter extends ByteManager {
    * @param Value - The string to write.
    */
   WriteString(Value: string): void {
-    for (let I = 0; I < Value.length; I++) {
-      this.WriteUInt16(Value.charCodeAt(I))
-    }
+    const Encode = new TextEncoder().encode(Value).buffer
+    this.Write(Encode)
   }
 }
