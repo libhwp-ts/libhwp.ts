@@ -161,11 +161,14 @@ export class ByteReader extends ByteManager {
 
   /**
    * Reads a string from the buffer.
-   * @param Offset - The number of bytes to read.
+   * @param Offset - The number of bytes to read. If it is infinity, it will be read until the end of the buffer.
    * @param TextDecoderOptions - The TextDecoderOptions object to use when decoding the string.
    * @returns The read string.
    */
   ReadString(Offset: number, TextDecoderOptions?: {Label: string, Options?: TextDecoderOptions}): string {
+    if (Offset === Infinity) {
+      Offset = this.RemainByte()
+    }
     if (typeof TextDecoderOptions === 'undefined') {
       TextDecoderOptions = {Label: 'utf-8', Options: {}}
     }
