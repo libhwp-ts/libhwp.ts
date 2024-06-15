@@ -1,3 +1,5 @@
+import type { TextDecoderOptions } from "node:stream/web"
+
 /**
  * Represents a byte manager for manipulating binary data.
  */
