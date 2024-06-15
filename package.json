@@ -5,7 +5,7 @@
   "description": "",
   "scripts": {
     "build": "pkgroll --src sources",
-    "lint": "tsc && eslint . --ext .ts",
+    "lint": "tsc --noEmit && eslint . --ext .ts",
     "test": "NODE_OPTIONS='--import=tsx --no-warnings' ava",
     "inspect:cfb": "tsx tests/inspect-cfb.ts",
     "debug": "tsx index.ts"
