@@ -38,3 +38,9 @@ export class HwpContainer {
     
   }
 }
+
+export class HwpContainerError extends Error {
+  constructor(Args: Parameters<ErrorConstructor>) {
+    super(...Args)
+  }
+}
