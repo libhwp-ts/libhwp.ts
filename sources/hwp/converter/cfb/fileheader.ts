@@ -16,10 +16,10 @@ export function ConvertHwpFileHeaderToCfb(HwpFileHeaderInstance: HwpFileHeader):
 
 function ConvertVersionToCfb(HwpFileHeaderInstance: HwpFileHeader): ArrayBuffer {
   const ByteWriterInstance = new ByteWriter(new ArrayBuffer(4))
-  const VersionNumber = ((Number(HwpFileHeaderInstance.Version.split('.')[0]) & 0xff) << 24)
-    | ((Number(HwpFileHeaderInstance.Version.split('.')[1]) & 0xff) << 16)
-    | ((Number(HwpFileHeaderInstance.Version.split('.')[2]) & 0xff) << 8)
-    | (Number(HwpFileHeaderInstance.Version.split('.')[3]) & 0xff)
+  const VersionNumber = ((Number(HwpFileHeaderInstance.GetVersion().split('.')[0]) & 0xff) << 24)
+    | ((Number(HwpFileHeaderInstance.GetVersion().split('.')[1]) & 0xff) << 16)
+    | ((Number(HwpFileHeaderInstance.GetVersion().split('.')[2]) & 0xff) << 8)
+    | (Number(HwpFileHeaderInstance.GetVersion().split('.')[3]) & 0xff)
   ByteWriterInstance.WriteUInt32(VersionNumber)
   return ByteWriterInstance.ArrayBuffer()
 }
@@ -45,7 +45,7 @@ export function ConvertCfbToHwpFileHeader(CfbArrayBuffer: ArrayBuffer): HwpFileH
     throw new Error('Invalid Hwp File Signature')
   }
   const HwpFileHeaderInstance = new HwpFileHeader()
-  HwpFileHeaderInstance.Version = ConvertCfbToVersion(ByteReaderInstance.ArrayBuffer().slice(17, 21))
+  HwpFileHeaderInstance.SetVersion(ConvertCfbToVersion(ByteReaderInstance.ArrayBuffer().slice(17, 21)))
   Object.entries(ConvertCfbToFlags(ByteReaderInstance.ArrayBuffer().slice(21, 25)))
     .filter(([Key, Value]) => Key !== 'UUID' && typeof Value === 'boolean' && Value === true).map(([Key]) => Key)
     .forEach(Flag => HwpFileHeaderInstance[Flag] = true)

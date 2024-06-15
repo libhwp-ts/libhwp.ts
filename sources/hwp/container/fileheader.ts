@@ -1,3 +1,6 @@
+import { HwpContainerError } from '../container.js'
+import * as Semver from 'semver'
+
 export interface IHwpFileHeader {
   Version?: string
   Compressed?: boolean
@@ -29,7 +32,7 @@ export class HwpFileHeader {
   /**
    * The version of the HWP document.
    */
-  public Version: string = '0.0.0.0'
+  protected Version: string = '0.0.0.0'
 
   /**
    * Indicates whether the document is compressed.
@@ -144,5 +147,49 @@ export class HwpFileHeader {
     for (const Key in Options) {
       this[Key] = Options[Key]
     }
+  }
+
+  /**
+   * Set the version of the HwpFileHeader instance.
+   * @param {string} Version - The version string to set. Must be a valid SemVer string.
+   * @throws {HwpFileHeaderVersionError} If the version string is invalid.
+   */
+  SetVersion(Version: string): void {
+    if (Semver.valid(Version) === null) {
+      throw new HwpFileHeaderVersionError(['Invalid version string. The version string must be a valid SemVer string.', { cause: new Error().stack }])
+    }
+    this.Version = Version 
+  }
+
+  /**
+   * Set the version safely of the HwpFileHeader instance.
+   * 
+   * @param {string} Version - The version to set.
+   */
+  SetVersionSafe(Version: string): void {
+    if (Semver.valid(Version) === null) {
+      return null
+    }
+    this.Version = Version
+  }
+
+  /**
+   * Get the version of the HwpFileHeader instance.
+   * @returns The version of the HwpFileHeader instance.
+   */
+  GetVersion(): string {
+    return this.Version
+  }
+}
+
+export class HwpFileHeaderError extends HwpContainerError {
+  constructor(Args: Parameters<ErrorConstructor>) {
+    super(Args)
+  }
+}
+
+export class HwpFileHeaderVersionError extends HwpFileHeaderError {
+  constructor(Args: Parameters<ErrorConstructor>) {
+    super(Args)
   }
 }
