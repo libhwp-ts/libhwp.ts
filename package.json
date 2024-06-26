@@ -52,7 +52,7 @@
     "url": "https://github.com/libhwp-ts/libhwp.ts.git"
   },
   "devDependencies": {
-    "@types/node": "^20.14.8",
+    "@types/node": "^20.14.9",
     "@types/semver": "^7.5.8",
     "@typescript-eslint/eslint-plugin": "^7.5.0",
     "@typescript-eslint/parser": "^7.5.0",
@@ -60,7 +60,7 @@
     "eslint": "^8.57.0",
     "pkgroll": "^2.1.1",
     "tsx": "^4.15.7",
-    "typescript-eslint": "^7.13.1"
+    "typescript-eslint": "^7.14.1"
   },
   "dependencies": {
     "cfb": "^1.2.2",
